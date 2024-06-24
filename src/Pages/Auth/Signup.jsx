@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Signup() {
     return (
         <>
@@ -160,7 +162,7 @@ function Signup() {
                         </div>
 
                         <div className="relative mb-4">
-                            <label htmlFor="firstName" className="text-sm leading-7 text-gray-600">Email <span className="text-red-500">*</span></label>
+                            <label htmlFor="email" className="text-sm leading-7 text-gray-600">Email <span className="text-red-500">*</span></label>
                             <input 
                                 type="email" 
                                 id="email" 
@@ -171,7 +173,7 @@ function Signup() {
                         </div>
 
                         <div className="relative mb-4">
-                            <label htmlFor="firstName" className="text-sm leading-7 text-gray-600">Mobile Number <span className="text-red-500">*</span></label>
+                            <label htmlFor="mobileNumber" className="text-sm leading-7 text-gray-600">Mobile Number <span className="text-red-500">*</span></label>
                             <input 
                                 type="tel" 
                                 id="mobileNumber" 
@@ -183,7 +185,7 @@ function Signup() {
                         </div>
 
                         <div className="relative mb-4">
-                            <label htmlFor="firstName" className="text-sm leading-7 text-gray-600">Password  <span className="text-red-500">*</span></label>
+                            <label htmlFor="password" className="text-sm leading-7 text-gray-600">Password  <span className="text-red-500">*</span></label>
                             <input 
                                 type="password" 
                                 id="password" 
@@ -198,7 +200,9 @@ function Signup() {
                             Create Account
                         </button>
 
-                        <p className="mt-3 text-xs text-gray-500">Already have an account? <a href="/login" className="text-yellow-500">Login</a></p>
+                        <p className="mt-3 text-xs text-gray-500">Already have an account? 
+                        <Link to="/auth/login" className="text-yellow-500">Login</Link>
+                        </p>
                     </form>
                 </div>
             </section>
