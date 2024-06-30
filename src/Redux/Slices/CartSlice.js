@@ -47,9 +47,16 @@ export const getCartDetails = createAsyncThunk('/cart/getDetails', async () => {
             success: 'Cart fetched successfully',
         });
         const apiResponse = await response;
+        
         return apiResponse;
     } catch(error) {
-        console.log(error);
+        console.log(error.response);
+        if(error?.response?.status === 401) {
+            toast.error('Please login to view cart');
+            return {
+                isUnauthorized: true
+            }
+        }
         toast.error('Something went wrong');
     }
 });

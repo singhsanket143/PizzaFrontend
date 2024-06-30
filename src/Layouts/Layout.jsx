@@ -4,6 +4,8 @@ import Pizzalogo from '../assets/Images/pizza1.png';
 import CartIcon from '../assets/Images/cart.svg';
 import { Link, useNavigate } from 'react-router-dom';
 import { logout } from '../Redux/Slices/AuthSlice';
+import { useEffect } from 'react';
+import { getCartDetails } from '../Redux/Slices/CartSlice';
 
 // eslint-disable-next-line react/prop-types
 function Layout({ children }) {
@@ -18,6 +20,20 @@ function Layout({ children }) {
         dispatch(logout());
         
     }
+
+    async function fetchCartDetails() {
+        const res = await dispatch(getCartDetails());
+        if(res?.payload?.isUnauthorized) {
+            dispatch(logout());
+        }
+    }
+
+    useEffect(() => {
+        console.log(typeof(isLoggedIn))
+        if(isLoggedIn) {
+            fetchCartDetails();
+        }
+    }, []);
 
     return (
         <div>
